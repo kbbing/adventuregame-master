@@ -4,7 +4,7 @@ import 'story.dart';
 //TODO: Step 5 - Create a new class called StoryBrain.
 class StoryBrain {
 //TODO: Step 16 - Create a property called storyNumber which starts with a value of 0. This will be used to track which story the user is currently viewing.
-  int storyNumber = 0;
+  int _storyNumber = 0;
 
 //TODO: Step 7 - Uncomment the lines below to include storyData as a private property in StoryBrain. Hint: You might need to change something in story.dart to make this work.
 
@@ -44,17 +44,17 @@ class StoryBrain {
 
 //TODO: Step 8 - Create a method called getStory() that returns the first storyTitle from _storyData.
   String getStory() {
-    return _storyData[storyNumber].storyTitle;
+    return _storyData[_storyNumber].storyTitle;
   }
 
 //TODO: Step 11 - Create a method called getChoice1() that returns the text for the first choice1 from _storyData.
   String getChoice1() {
-    return _storyData[storyNumber].choice1;
+    return _storyData[_storyNumber].choice1;
   }
 
 //TODO: Step 12 - Create a method called getChoice2() that returns the text for the first choice2 from _storyData.
   String getChoice2() {
-    return _storyData[storyNumber].choice2;
+    return _storyData[_storyNumber].choice2;
   }
 
 //TODO: Step 25 - Change the storyNumber property into a private property so that only story_brain.dart has access to it. You can do this by right clicking on the name (storyNumber) and selecting Refactor -> Rename to make the change across all the places where it's used.
@@ -64,28 +64,28 @@ class StoryBrain {
 //TODO: Step 20 - Refer to the story plan that is attached
 
 //TODO: Step 21 - Using the story plan, update nextStory() to change the storyNumber depending on the choice made by the user. e.g. if choiceNumber was equal to 1 and the storyNumber is 0, the storyNumber should become 2.  
-    switch (storyNumber) {
+    switch (_storyNumber) {
       case 0:
         if (choiceNumber == 1) {
-          storyNumber = 1;
+          _storyNumber = 2;
         } else {
-          storyNumber = 2;
+          _storyNumber = 1;
         }
         break;
 
       case 1:
         if (choiceNumber == 1) {
-          storyNumber = 2;
+          _storyNumber = 2;
         } else {
-          storyNumber = 3;
+          _storyNumber = 3;
         }
         break;
 
       case 2:
         if (choiceNumber == 1) {
-          storyNumber = 5;
+          _storyNumber = 5;
         } else {
-          storyNumber = 4;
+          _storyNumber = 4;
         }
         break;
 
@@ -100,12 +100,12 @@ class StoryBrain {
   }
 
   void restart() {
-    storyNumber = 0;
+    _storyNumber = 0;
   }
 
 //TODO: Step 27 - Create a method called buttonShouldBeVisible() which checks to see if storyNumber is 0 or 1 or 2 (when both buttons should show choices) and return true if that is the case, else it should return false.
  bool buttonShouldBeVisible(){
-  if (storyNumber == 0 || storyNumber == 1 || storyNumber == 2 ){
+  if (_storyNumber == 0 || _storyNumber == 1 || _storyNumber == 2 ){
     return true;
   }else{
     return false;
